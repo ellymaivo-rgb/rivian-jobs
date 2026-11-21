@@ -40,7 +40,7 @@
   .comments { margin-top: 18px; border-top: 1px solid #d5d9d9; padding-top: 14px; }
   .comments h4 { margin: 0 0 6px; font-size: 15px; }
   .comments p { margin: 0 0 8px; font-size: 13px; color: #565959; line-height: 1.5; }
-  .comments .giscus { margin-top: 8px; }
+  .comments iframe { margin-top: 8px; background: #fff; border-radius: 8px; }
   footer { max-width: 920px; margin: 0 auto; padding: 0 16px 40px; font-size: 13px; color: #565959; line-height: 1.6; }
   footer a { color: #1d3a2f; }
 </style>
@@ -133,7 +133,7 @@
   <div class="comments">
     <h4>Feedback on this resume</h4>
     <p>Leave your notes below. Your comment shows up right here on this page for Mai and others to read. Sign in with GitHub to comment.</p>
-    <div class="giscus" data-term="Strategy Analyst feedback"></div>
+    <iframe src="comments-strategy.html" title="Feedback on this resume" style="width:100%; height:420px; border:0; display:block;" loading="lazy"></iframe>
   </div>
 </div>
 </article>
@@ -222,7 +222,7 @@
   <div class="comments">
     <h4>Feedback on this resume</h4>
     <p>Leave your notes below. Your comment shows up right here on this page for Mai and others to read. Sign in with GitHub to comment.</p>
-    <div class="giscus" data-term="Supply Chain Bucket feedback"></div>
+    <iframe src="comments-bucket.html" title="Feedback on this resume" style="width:100%; height:420px; border:0; display:block;" loading="lazy"></iframe>
   </div>
 </div>
 </article>
@@ -312,7 +312,7 @@
   <div class="comments">
     <h4>Feedback on this resume</h4>
     <p>Leave your notes below. Your comment shows up right here on this page for Mai and others to read. Sign in with GitHub to comment.</p>
-    <div class="giscus" data-term="Supply Chain Co-op feedback"></div>
+    <iframe src="comments-coop.html" title="Feedback on this resume" style="width:100%; height:420px; border:0; display:block;" loading="lazy"></iframe>
   </div>
 </div>
 </article>
@@ -324,38 +324,12 @@
 </footer>
 <script>
 (function(){
-  var loadedGiscus = {};
-  function loadGiscus(card){
-    var box = card.querySelector(".giscus");
-    if (!box || loadedGiscus[box.getAttribute("data-term")]) return;
-    loadedGiscus[box.getAttribute("data-term")] = true;
-    var s = document.createElement("script");
-    s.src = "https://giscus.app/client.js";
-    s.setAttribute("data-repo", "ellymaivo-rgb/rivian-jobs");
-    s.setAttribute("data-repo-id", "R_kgDOV26Ixg");
-    s.setAttribute("data-category", "Announcements");
-    s.setAttribute("data-category-id", "DIC_kwDOV26Ixs4DLrEX");
-    s.setAttribute("data-mapping", "specific");
-    s.setAttribute("data-term", box.getAttribute("data-term"));
-    s.setAttribute("data-strict", "0");
-    s.setAttribute("data-reactions-enabled", "1");
-    s.setAttribute("data-emit-metadata", "0");
-    s.setAttribute("data-input-position", "bottom");
-    s.setAttribute("data-theme", "preferred_color_scheme");
-    s.setAttribute("data-lang", "en");
-    s.setAttribute("crossorigin", "anonymous");
-    s.async = true;
-    box.appendChild(s);
-  }
   document.querySelectorAll(".btn-view").forEach(function(btn){
     btn.addEventListener("click", function(){
       var viewer = document.getElementById(btn.getAttribute("data-target"));
       var open = viewer.classList.toggle("open");
       btn.textContent = open ? "Hide resume" : "View resume";
-      if (open) {
-        viewer.scrollIntoView({ behavior: "smooth", block: "start" });
-        loadGiscus(viewer.closest(".card"));
-      }
+      if (open) viewer.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 })();
