@@ -125,7 +125,7 @@
     </ul>
     <h3>SKILLS AND OTHERS</h3>
     <ul>
-      <li><b>Technical:</b> Advanced Excel (Pivot Table, VLOOKUP), AI Tools and Agents, Power Automate, Microsoft Lists, PowerPoint, Outlook, Microsoft Teams, monday.com, Trello, Python (Basic), HTML (Basic)</li>
+      <li><b>Technical:</b> Advanced Excel (Pivot Table, VLOOKUP), AI Tools and Agents, Google Sheets, Google Slides, Power Automate, Microsoft Lists, PowerPoint, Outlook, Microsoft Teams, monday.com, Trello, Python (Basic), HTML (Basic)</li>
       <li><b>Languages:</b> Vietnamese (Native), English (Fluent), Chinese Mandarin (Basic)</li>
       <li><b>Interests:</b> Zi Wei Dou Shu, Solo Travel, Plant-based Culinary Arts, Make-up, Social Media Content Creation</li>
     </ul>
@@ -133,24 +133,7 @@
   <div class="comments">
     <h4>Feedback on this resume</h4>
     <p>Leave your notes below. Your comment shows up right here on this page for Mai and others to read. Sign in with GitHub to comment.</p>
-    <div class="giscus">
-      <script src="https://giscus.app/client.js"
-        data-repo="ellymaivo-rgb/rivian-jobs"
-        data-repo-id="R_kgDOV26Ixg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOV26Ixs4DLrEX"
-        data-mapping="specific"
-        data-term="Strategy Analyst feedback"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
-    </div>
+    <div class="giscus" data-term="Strategy Analyst feedback"></div>
   </div>
 </div>
 </article>
@@ -239,24 +222,7 @@
   <div class="comments">
     <h4>Feedback on this resume</h4>
     <p>Leave your notes below. Your comment shows up right here on this page for Mai and others to read. Sign in with GitHub to comment.</p>
-    <div class="giscus">
-      <script src="https://giscus.app/client.js"
-        data-repo="ellymaivo-rgb/rivian-jobs"
-        data-repo-id="R_kgDOV26Ixg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOV26Ixs4DLrEX"
-        data-mapping="specific"
-        data-term="Supply Chain Bucket feedback"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
-    </div>
+    <div class="giscus" data-term="Supply Chain Bucket feedback"></div>
   </div>
 </div>
 </article>
@@ -346,24 +312,7 @@
   <div class="comments">
     <h4>Feedback on this resume</h4>
     <p>Leave your notes below. Your comment shows up right here on this page for Mai and others to read. Sign in with GitHub to comment.</p>
-    <div class="giscus">
-      <script src="https://giscus.app/client.js"
-        data-repo="ellymaivo-rgb/rivian-jobs"
-        data-repo-id="R_kgDOV26Ixg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOV26Ixs4DLrEX"
-        data-mapping="specific"
-        data-term="Supply Chain Co-op feedback"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
-    </div>
+    <div class="giscus" data-term="Supply Chain Co-op feedback"></div>
   </div>
 </div>
 </article>
@@ -375,12 +324,38 @@
 </footer>
 <script>
 (function(){
+  var loadedGiscus = {};
+  function loadGiscus(card){
+    var box = card.querySelector(".giscus");
+    if (!box || loadedGiscus[box.getAttribute("data-term")]) return;
+    loadedGiscus[box.getAttribute("data-term")] = true;
+    var s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.setAttribute("data-repo", "ellymaivo-rgb/rivian-jobs");
+    s.setAttribute("data-repo-id", "R_kgDOV26Ixg");
+    s.setAttribute("data-category", "Announcements");
+    s.setAttribute("data-category-id", "DIC_kwDOV26Ixs4DLrEX");
+    s.setAttribute("data-mapping", "specific");
+    s.setAttribute("data-term", box.getAttribute("data-term"));
+    s.setAttribute("data-strict", "0");
+    s.setAttribute("data-reactions-enabled", "1");
+    s.setAttribute("data-emit-metadata", "0");
+    s.setAttribute("data-input-position", "bottom");
+    s.setAttribute("data-theme", "preferred_color_scheme");
+    s.setAttribute("data-lang", "en");
+    s.setAttribute("crossorigin", "anonymous");
+    s.async = true;
+    box.appendChild(s);
+  }
   document.querySelectorAll(".btn-view").forEach(function(btn){
     btn.addEventListener("click", function(){
       var viewer = document.getElementById(btn.getAttribute("data-target"));
       var open = viewer.classList.toggle("open");
       btn.textContent = open ? "Hide resume" : "View resume";
-      if (open) viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (open) {
+        viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+        loadGiscus(viewer.closest(".card"));
+      }
     });
   });
 })();
